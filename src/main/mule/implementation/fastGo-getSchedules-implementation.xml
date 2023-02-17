@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<sub-flow name="fastGo-getSchedules-implementationSub_Flow" doc:id="2975dfe8-78ad-4d1b-bcca-7e72cbabed03" >
+		<http:request method="GET" doc:name="Request" doc:id="fe1c3f9f-73cc-4d3e-90ce-4d9b13d7ca70" config-ref="HTTP_Request_configuration_FastGo" path="${http.requester.schedulespath}">
+			<http:headers ><![CDATA[#[output application/java
+---
+{
+	"transactionId" : vars.transactionId
+}]]]></http:headers>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="dbd1f1f1-0d2d-4703-86a4-4f3eebdc82e4" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload map(value,index)->{
+    "departureDateTime": value.departuredate,
+    "fromLocation": value.fromlocation,
+    "toLocation": value.tolocation,
+    "availableSeats": value.availableseats	
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>
