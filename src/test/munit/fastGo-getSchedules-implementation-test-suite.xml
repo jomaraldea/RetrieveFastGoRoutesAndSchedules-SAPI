@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="fastGo-getSchedules-implementation-test-suite.xml" />
+	<munit:test name="fastGo-getSchedules-implementation-test-suite-fastGo-getSchedules-implementationSub_FlowTest" doc:id="035aabe1-8a08-4240-8252-d4da349ca24e" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to fastGo-getSchedules-implementationSub_Flow" doc:id="9a2a868b-a7b8-431d-8bc3-9382449b0c10" name="fastGo-getSchedules-implementationSub_Flow"/>
+		</munit:execution>
+	</munit:test>
+
+
+</mule>

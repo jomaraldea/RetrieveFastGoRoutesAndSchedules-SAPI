@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="fastGo-getRoutes-implementation-test-suite.xml" />
+	<munit:test name="fastGo-getRoutes-implementation-test-suite-fastGo-getRoutes-implementationSub_FlowTest" doc:id="dcdf73d8-26bf-4750-85d6-88547d83b7ac" description="Test">
+		<munit:behavior>
+			<munit-tools:mock-when doc:name="Mock when" doc:id="7a885947-356c-42ef-a6ca-1c0714f5bb77" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="f6ca4a0c-5b53-4595-9c74-3e2df7e3b71c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value='#[output application/java  --- readUrl("classpath://fastGogetRoutesimplementationSubFlowTest\mock_payload.dwl", "application/dw", {onlyData: true})]' mediaType="application/java" encoding="UTF-8" />
+					<munit-tools:variables >
+						<munit-tools:variable key="transactionId" value="#[output application/java --- readUrl('classpath://fastGogetRoutesimplementationSubFlowTest\set-event_variable-transactionId.dwl')]" mediaType="application/java" encoding="UTF-8" />
+						<munit-tools:variable key="transportCompany" value="#[output application/java --- readUrl('classpath://fastGogetRoutesimplementationSubFlowTest\set-event_variable-transportCompany.dwl')]" mediaType="application/java" encoding="UTF-8" />
+						<munit-tools:variable key="transportType" value="#[output application/java --- readUrl('classpath://fastGogetRoutesimplementationSubFlowTest\set-event_variable-transportType.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to fastGo-getRoutes-implementationSub_Flow" doc:id="dfa9effe-d3f3-4594-9774-26be50c53877" name="fastGo-getRoutes-implementationSub_Flow"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert doc:name="Assert expression" doc:id="7ab11a3c-78ef-48f2-a1b4-4ee044d6c048" />
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

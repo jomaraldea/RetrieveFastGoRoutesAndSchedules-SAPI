@@ -19,8 +19,8 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 output application/json
 ---
 payload map(value, index)-> {
-	"departureLocationCode": value.originlocationcode,
-    "arrivalLocationGo": value.destinationlocationcode
+	"departureLocationCode": value.originLocationCode,
+    "arrivalLocationGo": value.destinationLocationCode
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
